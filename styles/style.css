@@ -1,0 +1,79 @@
+
+.bg-custom {
+   background-color: #e2daf0 ;
+}
+
+.card {
+   background: #100f11b6;
+}
+
+a.nav-link {
+   color: #210841;
+   font-weight: 600;
+}
+
+.background-image {
+   height: 400px;
+   background-image: url("../img/img1.jpg");
+   background-size: cover;
+}
+
+h1,h2,h3, h4 {
+	font-family: 'Lato', Helvetica, sans-serif;
+	font-weight: 300;
+	color: #301257;
+}
+
+h2 {
+   font-size: 28px;
+}
+
+
+#left_col {
+   width: 280px;
+   float: left;
+}
+#content_container {
+   width: 699px;
+   height: 800px;
+   border-left: 3px solid #403F44;
+   float: left;
+}
+
+#left_nav h2 {
+margin: 0;
+font-size: 24px;
+}
+
+.profile_frame{
+width: 230px;
+height: 250px;
+background-image: url(../img/pf.png);
+border: 1px solid #403F44;
+margin-top: 30px;
+margin-left: 25px;
+}
+
+.grid { 
+   display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+   grid-gap: 20px;
+   align-items: stretch;
+   margin: 100px;
+   }
+ .grid a {
+   border: 1px solid #ccc;
+   box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
+   max-width: 100%;
+   margin-top: 5%;
+ }
+ .grid img{
+   width: 100%;
+   height: auto;
+   vertical-align: middle;
+}
+
+body, input, textarea {
+   font-family: "Poppins", sans-serif;
+ }
+ 
