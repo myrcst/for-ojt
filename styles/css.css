@@ -98,6 +98,9 @@
   .input-container {
     position: relative;
     margin: 1rem 0;
+    background-color: rgba(151, 119, 177, 0.459);
+    border-radius: 22px;
+    
   }
   
   .input {
@@ -116,8 +119,7 @@
   
   textarea.input {
     padding: 0.8rem 1.2rem;
-    min-height: 150px;
-    border-radius: 22px;
+    min-height: 160px; 
     resize: none;
     overflow-y: auto;
   }
@@ -246,9 +248,4 @@
   .input-container.focus span:before,
   .input-container.focus span:after {
     width: 50%;
-    opacity: 1;
   }
-  
-  .thead-c {
-    background-color: #523f72;
- }

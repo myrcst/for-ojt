@@ -20,9 +20,9 @@ const submit = document.querySelector('#submit');
 const modalMessage = document.querySelector("#feedback .modal-body");
 
 const email = document.querySelector('#email');
-const name = document.querySelector('#name');
-const message = document.querySelector('#message');
+const username = document.querySelector('#username');
+const messages = document.querySelector('#messages');
 
 submit.addEventListener('click', () => {
-   modalMessage.innerHTML = `<p>Thank you, ${name.value}, for sending a message!</p>`;
+   modalMessage.innerHTML = `<p>Thank you, ${username.value}, for sending a message!</p>`;
 });

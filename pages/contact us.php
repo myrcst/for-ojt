@@ -1,6 +1,3 @@
-<?php 
- include 'dbconnection.php';
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -82,8 +79,26 @@
 
         <form action="" method="POST">
           <h3 class="title fw-bold text-light text-center">Contact me</h3>
+          <?php 
+          session_start();
+          if (isset($_POST['username'])){
+            if (empty(($_POST['username'] )) || empty(($_POST['email'] )) || empty(($_POST['phone'] )) || empty(($_POST['messages'] ))){
+                echo "<p align='center'> <font color=indianred> Please fill up all the fields </p>";
+            
+         }else{
+            $conn = new mysqli("localhost", "root", "");
+            $conn->select_db("website");
+
+            $username = $_POST["username"];
+            $email = $_POST["email"];
+            $phone = $_POST["phone"];
+            $messages = $_POST["messages"];
+            $conn->query("INSERT INTO timed (username, email, phone , messages) Values ('{$username}' , '{$email}' ,'{$phone}' ,'{$messages}' )");
+          }
+         }
+          ?>
           <div class="input-container">
-            <input type="text" id="name" name="name" class="input">
+            <input type="text" id="username" name="username" class="input">
             <label for="">Username</label>
             <span>Username</span>
           </div>
@@ -93,7 +108,7 @@
             <span>Email</span>
           </div>
           <div class="input-container">
-            <input type="tel" id="phone" name="phone" class="input">
+            <input type="number" id="phone" name="phone" class="input">
             <label for="">Phone</label>
             <span>Phone</span>
           </div>
@@ -102,8 +117,9 @@
             <label for="">Message</label>
             <span>Message</span>
           </div>
+          
           <div class="text-center">
-          <button type="submit" name="submit" class="btn btn-primary fw-bold" data-bs-toggle="modal" data-bs-target="#feedback">
+          <button type="submit" name="submit" class="btn btn-primary fw-bold"  data-bs-toggle="modal" data-bs-target="#feedback">
            Send
          </button>
       </div>
@@ -111,7 +127,7 @@
       </div>
     </div>
   </div>
-   <div class="modal fade" id="feedback" tabindex="-1" aria-labelledby="feedbackLabel" aria-hidden="true">
+   <!--<div class="modal fade" id="feedback" tabindex="-1" aria-labelledby="feedbackLabel" aria-hidden="true">
     <div class="modal-dialog">
        <div class="modal-content">
           <div class="modal-header">
@@ -125,7 +141,7 @@
           </div>
        </div>
     </div>
- </div>
+ </div>-->
 
   <script src="../scripts/script.js"></script>
 </body>
