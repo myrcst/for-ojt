@@ -1,6 +1,6 @@
 <?php
 $conn = new mysqli("localhost", "root", "");
-$conn->select_db("website");
+$conn->select_db("usa_acosta");
 
 if(isset($_POST['deletedata']))
 {
