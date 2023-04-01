@@ -1,3 +1,6 @@
+<?php
+require_once("conts.php");
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -86,14 +89,11 @@
                 echo "<p align='center'> <font color=indianred> Please fill up all the fields </p>";
             
          }else{
-            $conn = new mysqli("localhost", "root", "");
-            $conn->select_db("usa_acosta");
-
             $username = $_POST["username"];
             $email = $_POST["email"];
             $phone = $_POST["phone"];
             $messages = $_POST["messages"];
-            $conn->query("INSERT INTO timed (username, email, phone , messages) Values ('{$username}' , '{$email}' ,'{$phone}' ,'{$messages}' )");
+            $con->query("INSERT INTO timed (username, email, phone , messages) Values ('{$username}' , '{$email}' ,'{$phone}' ,'{$messages}' )");
           }
          }
           ?>
