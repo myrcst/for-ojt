@@ -10,7 +10,7 @@ if (isset($_POST['updatedata'])) {
    $messages = $_POST['messages'];
 
    $query = "UPDATE timed SET username='$username', email='$email', phone='$phone', messages=' $messages' WHERE username='$username'  ";
-   $query_run = mysqli_query($conn, $query);
+   $query_run = mysqli_query($con, $query);
 
    if ($query_run) {
       echo '<script> alert("Data Updated"); </script>';
