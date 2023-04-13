@@ -2,7 +2,7 @@
 require_once("conts.php");
 
 // use uppercase for SQL reserved keywords
-$query = " SELECT * FROM timed ";
+$query = " SELECT * FROM timed ORDER BY date DESC";
 $result = mysqli_query($con, $query);
 $rows = mysqli_fetch_all($result, MYSQLI_ASSOC)
 ?>
@@ -75,6 +75,7 @@ $rows = mysqli_fetch_all($result, MYSQLI_ASSOC)
                            <td> Phone</td>
                            <td> Message</td>
                            <td> Date</td>
+                           <td> View </td>
                            <td> Edit </td>
                            <td> Delete </td>
                         </tr>
@@ -90,8 +91,9 @@ $rows = mysqli_fetch_all($result, MYSQLI_ASSOC)
                               <td><?= $row['phone'] ?></td>
                               <td><?= $row['messages'] ?></td>
                               <td><?= $row['date'] ?></td>
-                              <td><button type="button" class="btn btn-success editbtn"> EDIT </button></td>
-                              <td><button type="button" class="btn btn-danger deletebtn"> DELETE </button>
+                              <td><button type="button" class="btn viewbtn"> VIEW </button></td>
+                              <td><button type="button" class="btn editbtn"> EDIT </button></td>
+                              <td><button type="button" class="btn deletebtn"> DELETE </button>
                               </td>
                            </tr>
                         <?php endforeach ?>
@@ -139,6 +141,61 @@ $rows = mysqli_fetch_all($result, MYSQLI_ASSOC)
                            </div>
                         </form>
 
+                     </div>
+                  </div>
+               </div>
+                 <!-- VIEW FORM (Bootstrap MODAL) -->
+                 <div class="modal fade" id="viewmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                     <div class="modal-content text-center">
+                        <div class="modal-header">
+                           <h5 class="modal-title" id="exampleModalLabel"> View </h5>
+                           <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                           </button>
+                        </div>
+                           <div class="modal-body">
+                              <input type="hidden" name="update" id="update">
+
+                              <div class="form-group row">
+                              <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Username</label>
+                                 <div class="col-sm-10">
+                                 <p class="form-control">
+                                 <?=$row['username'];?>
+                                 </p>
+                                 </div>
+                              </div>
+
+                              <div class="form-group row">
+                              <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
+                                 <div class="col-sm-10">
+                                 <p class="form-control">
+                                 <?=$row['email'];?>
+                                 </p>
+                                 </div>
+                              </div>
+
+                              <div class="form-group row">
+                              <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Phone</label>
+                                 <div class="col-sm-10">
+                                 <p class="form-control">
+                                 <?=$row['phone'];?>
+                                 </p>
+                                 </div>
+                              </div>
+
+                              <div class="form-group row">
+                              <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Message</label>
+                                 <div class="col-sm-10">
+                                 <p class="form-control">
+                                 <?=$row['messages'];?>
+                                 </p>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary mx-1" data-bs-dismiss="modal">Close</button>
+                           </div>
                      </div>
                   </div>
                </div>
@@ -199,8 +256,26 @@ $rows = mysqli_fetch_all($result, MYSQLI_ASSOC)
                         $('#phone').val(data[2]);
                         $('#messages').val(data[3]);
                      });
-                  });
+                  });                 
                </script>
+
+               <script>
+                  $(document).ready(function() {
+                     $('.viewbtn').on('click', function() {
+                        $('#viewmodal').modal('show');
+                        $tr = $(this).closest('tr');
+                        var data = $tr.children("td").map(function() {
+                           return $(this).text();
+                        }).get();
+
+                        console.log(data);
+                        $('#username').val(data[0]);
+                        $('#email').val(data[1]);
+                        $('#phone').val(data[2]);
+                        $('#messages').val(data[3]);
+                     });
+                  });
+                  </script>
             </div>
          </div>
       </div>
